@@ -48,6 +48,14 @@ class LinkedList {
     return this.#list;
   }
 
+  tail() {
+    for (let node = this.#list; node !== null; node = node.nextNode) {
+      if (node.nextNode === null) {
+        return node;
+      }
+    }
+  }
+
   print() {
     console.log(this.#list);
   }
@@ -60,3 +68,4 @@ list.append(3);
 list.prepend(4);
 list.size();
 list.head();
+list.tail();
