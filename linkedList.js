@@ -20,12 +20,9 @@ class LinkedList {
       return;
     }
 
-    let node = this.#list;
-
-    while (true) {
+    for (let node = this.#list; node !== null; node = node.nextNode) {
       if (node.nextNode === null) {
         node.nextNode = new Node(value);
-        break;
       }
       node = node.nextNode;
     }
