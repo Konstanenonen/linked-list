@@ -56,6 +56,17 @@ class LinkedList {
     }
   }
 
+  at(index) {
+    let node = this.#list;
+
+    for (let i = 0; i <= index; i = i + 1) {
+      if (i === index) return node;
+      if (node.nextNode === null) return;
+
+      node = node.nextNode;
+    }
+  }
+
   print() {
     console.log(this.#list);
   }
@@ -66,6 +77,4 @@ list.append(1);
 list.prepend(2);
 list.append(3);
 list.prepend(4);
-list.size();
-list.head();
-list.tail();
+list.at(0);
