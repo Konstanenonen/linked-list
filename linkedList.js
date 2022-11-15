@@ -44,6 +44,10 @@ class LinkedList {
     return count;
   }
 
+  head() {
+    return this.#list;
+  }
+
   print() {
     console.log(this.#list);
   }
@@ -55,3 +59,4 @@ list.prepend(2);
 list.append(3);
 list.prepend(4);
 list.size();
+list.head();
