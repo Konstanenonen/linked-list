@@ -23,9 +23,15 @@ class LinkedList {
     for (let node = this.#list; node !== null; node = node.nextNode) {
       if (node.nextNode === null) {
         node.nextNode = new Node(value);
+        return;
       }
-      node = node.nextNode;
     }
+  }
+
+  prepend(value) {
+    const firstNode = new Node(value);
+    firstNode.nextNode = this.#list;
+    this.#list = firstNode;
   }
 
   print() {
