@@ -34,7 +34,24 @@ class LinkedList {
     this.#list = firstNode;
   }
 
+  size() {
+    if (this.#list === null) return 0;
+
+    let count = 0;
+    for (let node = this.#list; node !== null; node = node.nextNode) {
+      count = count + 1;
+    }
+    return count;
+  }
+
   print() {
     console.log(this.#list);
   }
 }
+
+const list = new LinkedList();
+list.append(1);
+list.prepend(2);
+list.append(3);
+list.prepend(4);
+list.size();
