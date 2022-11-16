@@ -41,6 +41,7 @@ class LinkedList {
     for (let node = this.#list; node !== null; node = node.nextNode) {
       count = count + 1;
     }
+
     return count;
   }
 
@@ -85,6 +86,7 @@ class LinkedList {
     for (let node = this.#list; node !== null; node = node.nextNode) {
       if (node.value() === value) return true;
     }
+
     return false;
   }
 
@@ -94,6 +96,7 @@ class LinkedList {
       index = index + 1;
       if (node.value() === value) return index;
     }
+
     return null;
   }
 
@@ -105,11 +108,52 @@ class LinkedList {
         finalString += 'null';
       }
     }
+
     return finalString;
+  }
+
+  insertAt(value, index) {
+    if (index === 0) {
+      this.prepend(value);
+      return;
+    }
+    if (index >= this.size() - 1) {
+      this.append(value);
+    }
+
+    let nodeBefore = this.#list;
+    for (let i = 0; i < index - 1; i = i + 1) {
+      nodeBefore = nodeBefore.nextNode;
+    }
+
+    const nodeAfter = nodeBefore.nextNode;
+
+    const newNode = new Node(value);
+
+    newNode.nextNode = nodeAfter;
+    nodeBefore.nextNode = newNode;
+  }
+
+  removeAt(index) {
+    if (index === 0) {
+      this.#list = this.#list.nextNode;
+      return;
+    }
+    if (index > this.size - 1) {
+      this.pop();
+      return;
+    }
+
+    let nodeBefore = this.#list;
+    for (let i = 0; i < index - 1; i = i + 1) {
+      nodeBefore = nodeBefore.nextNode;
+    }
+    nodeBefore.nextNode = nodeBefore.nextNode.nextNode;
   }
 }
 
 const list = new LinkedList();
+
 list.append('one');
 list.append('two');
 list.append('three');
