@@ -88,15 +88,24 @@ class LinkedList {
     return false;
   }
 
+  find(value) {
+    let index = -1;
+    for (let node = this.#list; node !== null; node = node.nextNode) {
+      index = index + 1;
+      if (node.value() === value) return index;
+    }
+    return null;
+  }
+
   print() {
     console.log(this.#list);
   }
 }
 
 const list = new LinkedList();
-list.append(0);
-list.append(1);
-list.append(2);
-list.append(3);
-list.append(4);
-list.contains(3);
+list.append('one');
+list.append('two');
+list.append('three');
+list.append('four');
+list.append('five');
+list.find(2);
