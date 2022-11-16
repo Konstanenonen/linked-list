@@ -81,15 +81,22 @@ class LinkedList {
     }
   }
 
+  contains(value) {
+    for (let node = this.#list; node !== null; node = node.nextNode) {
+      if (node.value() === value) return true;
+    }
+    return false;
+  }
+
   print() {
     console.log(this.#list);
   }
 }
 
 const list = new LinkedList();
+list.append(0);
 list.append(1);
-list.prepend(2);
+list.append(2);
 list.append(3);
-list.prepend(4);
-list.pop();
-list.print();
+list.append(4);
+list.contains(3);
