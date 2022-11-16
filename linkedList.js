@@ -97,8 +97,15 @@ class LinkedList {
     return null;
   }
 
-  print() {
-    console.log(this.#list);
+  toString() {
+    let finalString = '';
+    for (let node = this.#list; node !== null; node = node.nextNode) {
+      finalString += `( ${node.value()} ) -> `;
+      if (node.nextNode === null) {
+        finalString += 'null';
+      }
+    }
+    return finalString;
   }
 }
 
@@ -108,4 +115,4 @@ list.append('two');
 list.append('three');
 list.append('four');
 list.append('five');
-list.find(2);
+list.toString();
